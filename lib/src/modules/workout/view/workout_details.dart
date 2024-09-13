@@ -6,6 +6,7 @@ import 'package:fit_journey/src/core/utils/app_fonts.dart';
 import 'package:fit_journey/src/modules/cusotm_elements/custom_button.dart';
 import 'package:fit_journey/src/modules/cusotm_elements/custom_text.dart';
 import 'package:fit_journey/src/modules/workout/provider/workout_provider.dart';
+import 'package:fit_journey/src/modules/workout/view/my_exercises.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,8 +17,7 @@ class WorkoutDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final workoutProvider =
-        Provider.of<WorkoutProvider>(context, listen: false);
+    final workoutProvider = Provider.of<WorkoutProvider>(context, listen: false);
 
     Future<bool> onWillPopUp() async {
       if (workoutProvider.isSelectMode) {
@@ -82,7 +82,9 @@ class WorkoutDetails extends StatelessWidget {
                     fontFamily: AppFonts.PoppinsBold,
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=>MyExercises()));
+                    },
                     child: CustomText(
                       fontSize: 16.sp,
                       text: 'See All',
@@ -138,7 +140,7 @@ class WorkoutDetails extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: workoutProvider.days.length,
         itemBuilder: (context, index) {
-          return ListItemDay(index: index, workoutProvider: workoutProvider);
+          return listItemDay(index: index, workoutProvider: workoutProvider);
         },
         separatorBuilder: (BuildContext context, int index) {
           return SizedBox(
@@ -149,7 +151,7 @@ class WorkoutDetails extends StatelessWidget {
     );
   }
 
-  Widget ListItemDay(
+  Widget listItemDay(
       {required int index, required WorkoutProvider workoutProvider}) {
     return InkWell(
       onTap: () {

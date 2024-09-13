@@ -430,6 +430,7 @@ class HomeScreen extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: ListView.separated(
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: 2,
             shrinkWrap: true,
             itemBuilder: (context, index) {
