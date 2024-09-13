@@ -85,11 +85,19 @@ class WorkoutDetails extends StatelessWidget {
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (_)=>MyExercises()));
                     },
-                    child: CustomText(
-                      fontSize: 16.sp,
-                      text: 'See All',
-                      textColor: AppColors.appThemeColor,
-                      fontFamily: AppFonts.PoppinsBold,
+                    child: Container(
+                      
+                      width: 100.w,
+                      padding: EdgeInsets.symmetric(vertical: 10.h),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: CustomText(
+                          fontSize: 16.sp,
+                          text: 'See All',
+                          textColor: AppColors.appThemeColor,
+                          fontFamily: AppFonts.PoppinsBold,
+                        ),
+                      ),
                     ),
                   ),
                 ],
