@@ -210,6 +210,8 @@ class WorkoutDetails extends StatelessWidget {
     return GestureDetector(
       onLongPress: () {
         workoutProvider.updateSelectMode();
+          workoutProvider.updateSelectWorkOut(index);
+
       },
       onTap: (){
         if(workoutProvider.isSelectMode){

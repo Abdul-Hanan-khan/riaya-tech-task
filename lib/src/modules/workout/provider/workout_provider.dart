@@ -111,6 +111,11 @@ class WorkoutProvider with ChangeNotifier {
 
   updateSelectMode() {
     isSelectMode = !isSelectMode;
+    if(!isSelectMode){
+      workouts.forEach((element){
+        element.isSelected = false;
+      });
+    }
     notifyListeners();
   }
 
